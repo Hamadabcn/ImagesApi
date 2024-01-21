@@ -11,4 +11,3 @@ def get_secure_filename_filepath(filename):
     filename = secure_filename(filename)
     filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
     return filename, filepath
-

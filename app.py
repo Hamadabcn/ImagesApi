@@ -1,5 +1,7 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from actions import bp as actionsbp
+from android import bp as androidbp
+from filters import bp as filtersbp
 from helpers import allowed_extensions, get_secure_filename_filepath
 
 UPLOAD_FOLDER = 'uploads/'
@@ -13,6 +15,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
 
 app.register_blueprint(actionsbp)
+app.register_blueprint(filtersbp)
+app.register_blueprint(androidbp)
 
 
 @app.route('/images', methods=['POST'])
@@ -36,3 +40,8 @@ def upload_images():
             'message': 'File successfully uploaded',
             'filename': filename
         }), 201
+
+
+@app.route('/uploads/<name>')
+def download_file(name):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], name)
