@@ -15,8 +15,8 @@ app = Flask(__name__)
 app.secret_key = 'SECRET_KEY'
 
 app.config['S3_BUCKET'] = 'image-api-bucket-2024'
-app.config['S3_KEY'] = 'AKIAU6GDYVZSLGJR45Z4'
-app.config['S3_SECRET'] = 'pCwGrpOS3ZzhnP1/MaZ+Hx8cV4p6PvV0cv5t08Lf'
+app.config['S3_KEY'] = 'Your Secret Key'
+app.config['S3_SECRET'] = 'Your Secret Key'
 app.config['S3_LOCATION'] = 'https://image-api-bucket-2024.s3.eu-west-3.amazonaws.com/uploads/'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
